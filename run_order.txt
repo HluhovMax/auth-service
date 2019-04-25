@@ -1,0 +1,1 @@
+config-service -> registry-service -> gateway-service -> auth-service
