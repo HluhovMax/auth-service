@@ -1,6 +1,7 @@
 package com.example.authservice.configuration;
 
 import com.example.authservice.model.AT;
+import com.example.authservice.model.RT;
 import com.example.authservice.repository.ATRepo;
 import com.example.authservice.repository.RTRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,11 @@ public class SecondTokenStore implements TokenStore {
 
     @Override
     public void storeRefreshToken(OAuth2RefreshToken refreshToken, OAuth2Authentication authentication) {
-
+        RT rt = new RT().builder()
+                .tokenValue(refreshToken.getValue())
+                .clientId(authentication.getOAuth2Request().getClientId())
+                .build();
+        refRepo.save(rt);
     }
 
     @Override
