@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class AT {
+public class AccessToken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
