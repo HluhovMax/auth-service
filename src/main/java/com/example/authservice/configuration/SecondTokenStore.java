@@ -4,7 +4,6 @@ import com.example.authservice.model.AT;
 import com.example.authservice.model.RT;
 import com.example.authservice.repository.ATRepo;
 import com.example.authservice.repository.RTRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
