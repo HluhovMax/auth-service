@@ -12,6 +12,7 @@ import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.Date;
 
 @Slf4j
 @Component
@@ -26,7 +27,7 @@ public class SecondTokenStore implements TokenStore {
         this.accRepo = accRepo;
     }
 
-    private final static String EQUALS = " === ";
+    private final static String EQUALS = "\n === INTO ===";
 
 
     @Override
@@ -46,12 +47,12 @@ public class SecondTokenStore implements TokenStore {
                 .clientId(authentication.getOAuth2Request().getClientId())
                 .build();
         accessToken = accRepo.save(accessToken);
-        log.info("\n" + EQUALS + "INTO" + EQUALS + " storeAccessToken()\nwith access token: \n{}", accessToken);
-        //log.debug("\n" + EQUALS + "INTO" + EQUALS + " storeAccessToken()\nwith access token: \n{}", accessToken);
+        log.info(EQUALS + " storeAccessToken()\nwith access token: \n{}, \ntime: {}", accessToken, new Date());
     }
 
     @Override
     public OAuth2AccessToken readAccessToken(String tokenValue) {
+        log.info(EQUALS + " readAccessToken() \nwith time: {}", new Date());
         return null;
     }
 
@@ -67,8 +68,7 @@ public class SecondTokenStore implements TokenStore {
                 .clientId(authentication.getOAuth2Request().getClientId())
                 .build();
         rToken = refRepo.save(rToken);
-        log.info("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh rToken: \n{}", rToken);
-        //log.debug("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh rToken: \n{}", rToken);
+        log.info(EQUALS + " storeRefreshToken()\nwith refresh rToken: \n{}, \ntime: {}", rToken, new Date());
     }
 
     @Override
@@ -93,6 +93,7 @@ public class SecondTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken getAccessToken(OAuth2Authentication authentication) {
+        log.info(EQUALS + " getAccessToken() \nwith hello.message: {}", new Date());
         return null;
     }
 

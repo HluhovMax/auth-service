@@ -1,11 +1,11 @@
 package com.example.authservice.repository;
 
-import com.example.authservice.model.AuthClientDetails;
+import com.example.authservice.model.CustomClientDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface AuthClientRepository extends JpaRepository<AuthClientDetails, Long> {
+public interface AuthClientRepository extends JpaRepository<CustomClientDetails, Long> {
 
-    Optional<AuthClientDetails> findByClientId(String clientId);
+    Optional<CustomClientDetails> findByClientId(String clientId);
 }

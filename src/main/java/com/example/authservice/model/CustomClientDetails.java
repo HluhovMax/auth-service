@@ -9,7 +9,7 @@ import java.util.*;
 
 @Entity
 @Data
-public class AuthClientDetails implements ClientDetails {
+public class CustomClientDetails implements ClientDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -42,7 +42,7 @@ public class AuthClientDetails implements ClientDetails {
 
     @Override
     public boolean isSecretRequired() {
-        return true;
+        return false;
     }
 
     @Override
