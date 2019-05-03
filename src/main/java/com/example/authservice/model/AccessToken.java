@@ -13,7 +13,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class AccessToken {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

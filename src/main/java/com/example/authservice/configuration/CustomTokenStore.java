@@ -1,27 +1,5 @@
 package com.example.authservice.configuration;
 
-import com.example.authservice.model.CustomAccessToken;
-import com.example.authservice.model.CustomRefreshToken;
-import com.example.authservice.repository.TokenAccessRepository;
-import com.example.authservice.repository.TokenRefreshRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
-import org.springframework.security.oauth2.common.DefaultOAuth2RefreshToken;
-import org.springframework.security.oauth2.common.OAuth2AccessToken;
-import org.springframework.security.oauth2.common.OAuth2RefreshToken;
-import org.springframework.security.oauth2.provider.OAuth2Authentication;
-import org.springframework.security.oauth2.provider.token.AuthenticationKeyGenerator;
-import org.springframework.security.oauth2.provider.token.DefaultAuthenticationKeyGenerator;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.stereotype.Component;
-
-import java.io.UnsupportedEncodingException;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-import java.util.Collection;
-
 
 public class CustomTokenStore{
 

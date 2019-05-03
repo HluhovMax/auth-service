@@ -1,9 +1,9 @@
 package com.example.authservice.configuration;
 
 import com.example.authservice.model.AccessToken;
-import com.example.authservice.model.RT;
-import com.example.authservice.repository.ATRepo;
-import com.example.authservice.repository.RTRepo;
+import com.example.authservice.model.RefreshToken;
+import com.example.authservice.repository.AccessTokenRepo;
+import com.example.authservice.repository.RefreshTokenRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
@@ -18,10 +18,10 @@ import java.util.Collection;
 public class SecondTokenStore implements TokenStore {
 
 
-    private final RTRepo refRepo;
-    private final ATRepo accRepo;
+    private final RefreshTokenRepo refRepo;
+    private final AccessTokenRepo accRepo;
 
-    public SecondTokenStore(RTRepo refRepo, ATRepo accRepo) {
+    public SecondTokenStore(RefreshTokenRepo refRepo, AccessTokenRepo accRepo) {
         this.refRepo = refRepo;
         this.accRepo = accRepo;
     }
@@ -62,13 +62,13 @@ public class SecondTokenStore implements TokenStore {
 
     @Override
     public void storeRefreshToken(OAuth2RefreshToken refreshToken, OAuth2Authentication authentication) {
-        RT rt = new RT().builder()
+        RefreshToken rToken = new RefreshToken().builder()
                 .tokenValue(refreshToken.getValue())
                 .clientId(authentication.getOAuth2Request().getClientId())
                 .build();
-        rt = refRepo.save(rt);
-        log.info("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh token: \n{}", rt);
-        //log.debug("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh token: \n{}", rt);
+        rToken = refRepo.save(rToken);
+        log.info("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh rToken: \n{}", rToken);
+        //log.debug("\n" + EQUALS + "INTO" + EQUALS + " storeRefreshToken()\nwith refresh rToken: \n{}", rToken);
     }
 
     @Override
