@@ -39,14 +39,6 @@ public class OAuth2AuthorizationConfig extends AuthorizationServerConfigurerAdap
         clients.withClientDetails(authClientDetailsService);
     }
 
-//    @Bean
-//    public TokenStore tokenStore() {
-//        // Default implementation of tokenValue store,
-//        // that does not save tokenValue in db
-//        //return new JwtTokenStore(jwtAccessTokenConverter());
-//        return new SecondTokenStore();
-//    }
-
     @Qualifier("secondTokenStore")
     @Autowired
     private TokenStore tokenStore;
