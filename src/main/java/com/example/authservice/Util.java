@@ -2,6 +2,9 @@ package com.example.authservice;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+/**
+ * Utility class for hashing passwords
+ */
 public class Util {
     public static void main(String[] args) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

@@ -3,7 +3,9 @@ package com.example.authservice.model;
 import lombok.Data;
 
 import javax.persistence.*;
-
+/**
+ * Entity that represents Scope
+ */
 @Entity
 @Data
 public class Scope {

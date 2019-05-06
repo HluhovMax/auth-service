@@ -8,6 +8,9 @@ import javax.persistence.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Entity that represents ClientDetails
+ */
 @Entity
 @Data
 public class CustomClientDetails implements ClientDetails {

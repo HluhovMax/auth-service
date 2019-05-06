@@ -7,6 +7,10 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * Entity that represents User, use when implement Password Grant_Type
+ */
+// comment this annotation when implement Password flow do not needed
 @Entity
 @Data
 public class AuthenticationServiceUser implements UserDetails {

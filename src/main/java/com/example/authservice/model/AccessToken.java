@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+/**
+ * Entity that represents Access Tokens
+ */
 @Entity
 @Data
 @Builder
