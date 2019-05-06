@@ -16,7 +16,7 @@ public class CustomClientDetails implements ClientDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, name = "enterprise_uuid")
     private String clientId;
 
     @Column(unique = true)

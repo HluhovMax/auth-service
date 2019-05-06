@@ -9,7 +9,7 @@ import java.util.Set;
 
 @Entity
 @Data
-public class User implements UserDetails {
+public class AuthenticationServiceUser implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class User implements UserDetails {
     @JoinTable(name = "authority_user", joinColumns = {
             @JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = {
             @JoinColumn(name = "authority_id", referencedColumnName = "id") })
-    private Set<Authorities> authorities = new HashSet<>();
+    private Set<AuthenticationServiceAuthorities> authorities = new HashSet<>();
 
     @Override
     public boolean isAccountNonExpired() {

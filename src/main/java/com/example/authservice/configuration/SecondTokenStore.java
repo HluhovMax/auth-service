@@ -52,7 +52,7 @@ public class SecondTokenStore implements TokenStore {
 
     @Override
     public OAuth2AccessToken readAccessToken(String tokenValue) {
-        log.info(EQUALS + " readAccessToken() \nwith time: {}", new Date());
+        log.info(EQUALS + " readAccessToken() \nwith token: {}", tokenValue);
         return null;
     }
 

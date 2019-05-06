@@ -8,7 +8,7 @@ import javax.persistence.Id;
 
 @Entity
 @Data
-public class Authorities implements GrantedAuthority {
+public class AuthenticationServiceAuthorities implements GrantedAuthority {
 
     @Id
     private Long id;
