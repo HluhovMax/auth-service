@@ -6,6 +6,7 @@ import org.springframework.security.oauth2.provider.ClientDetails;
 
 import javax.persistence.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -23,7 +24,11 @@ public class CustomClientDetails implements ClientDetails {
 
     private String grantTypes;
 
-    private String scopes;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "scope_custom_client_details", joinColumns = {
+            @JoinColumn(name = "scope_id", referencedColumnName = "id") }, inverseJoinColumns = {
+            @JoinColumn(name = "client_details_id", referencedColumnName = "id") })
+    private Set<Scope> scopes = new HashSet<>();
 
     private String resources;
 
@@ -52,7 +57,9 @@ public class CustomClientDetails implements ClientDetails {
 
     @Override
     public Set<String> getScope() {
-        return scopes != null ? new HashSet<>(Arrays.asList(scopes.split(","))) : null;
+        return scopes.stream()
+                .map(scope -> scope.getScope())
+                .collect(Collectors.toSet());
     }
 
     @Override
