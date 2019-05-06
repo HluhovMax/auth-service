@@ -6,6 +6,6 @@ public class Util {
     public static void main(String[] args) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
-        System.out.println(bCryptPasswordEncoder.encode("gshockprotection"));
+        System.out.println(bCryptPasswordEncoder.encode("1234"));
     }
 }
