@@ -4,6 +4,7 @@ import com.example.authservice.model.AccessToken;
 import com.example.authservice.model.RefreshToken;
 import com.example.authservice.repository.AccessTokenRepo;
 import com.example.authservice.repository.RefreshTokenRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.common.OAuth2AccessToken;
 import org.springframework.security.oauth2.common.OAuth2RefreshToken;
 import org.springframework.security.oauth2.provider.OAuth2Authentication;
@@ -15,6 +16,7 @@ import java.util.Collection;
 /**
  * storage that implement TokenStore for persisting tokens.
  */
+@Slf4j
 @Component
 public class SecondTokenStore implements TokenStore {
 
@@ -44,7 +46,8 @@ public class SecondTokenStore implements TokenStore {
                 .clientId(authentication.getOAuth2Request().getClientId())
                 .expirationDate(token.getExpiration())
                 .build();
-        accRepo.save(accessToken);
+        accessToken = accRepo.save(accessToken);
+        log.info("\nAccessToken: {}", accessToken);
     }
 
     @Override
