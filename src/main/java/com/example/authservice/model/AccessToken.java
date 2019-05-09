@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Entity that represents Access Tokens
@@ -24,4 +25,6 @@ public class AccessToken {
     private String tokenValue;
 
     private String clientId;
+
+    private Date expirationDate;
 }

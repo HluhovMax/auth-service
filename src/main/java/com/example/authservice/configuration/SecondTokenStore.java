@@ -42,6 +42,7 @@ public class SecondTokenStore implements TokenStore {
         AccessToken accessToken = new AccessToken().builder()
                 .tokenValue(token.getValue())
                 .clientId(authentication.getOAuth2Request().getClientId())
+                .expirationDate(token.getExpiration())
                 .build();
         accRepo.save(accessToken);
     }
