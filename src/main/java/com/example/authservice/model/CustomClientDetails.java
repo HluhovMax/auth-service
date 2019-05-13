@@ -1,6 +1,7 @@
 package com.example.authservice.model;
 
 import lombok.Data;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
@@ -27,11 +28,11 @@ public class CustomClientDetails implements ClientDetails {
 
     private String grantTypes;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "scope_custom_client_details", joinColumns = {
-            @JoinColumn(name = "scope_id", referencedColumnName = "id") }, inverseJoinColumns = {
-            @JoinColumn(name = "client_details_id", referencedColumnName = "id") })
-    private Set<Scope> scopes = new HashSet<>();
+            @JoinColumn(name = "client_details_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "scope_id", referencedColumnName = "id")})
+    private List<Scope> scopes;
 
     private String resources;
 
@@ -55,14 +56,20 @@ public class CustomClientDetails implements ClientDetails {
 
     @Override
     public boolean isScoped() {
-        return false;
+        return true;
     }
 
     @Override
     public Set<String> getScope() {
         return scopes.stream()
-                .map(scope -> scope.getScope())
+                .map(Scope::getScope)
                 .collect(Collectors.toSet());
+//        String join = StringUtils.join(scopes.stream()
+//                .map(scope -> scope.getScope())
+//                .collect(Collectors.toList()).toArray(), ",");
+//        Set<String> scope = new HashSet<>();
+//        scope.add(join);
+//        return scope;
     }
 
     @Override

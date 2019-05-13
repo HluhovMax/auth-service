@@ -47,7 +47,7 @@ public class SecondTokenStore implements TokenStore {
                 .expirationDate(token.getExpiration())
                 .build();
         accessToken = accRepo.save(accessToken);
-        log.info("\nAccessToken: {}", accessToken);
+        log.info("\n===" + accessToken.getId() + "===AccessToken: {}", accessToken);
     }
 
     @Override
