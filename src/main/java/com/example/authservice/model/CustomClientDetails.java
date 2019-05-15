@@ -1,7 +1,6 @@
 package com.example.authservice.model;
 
 import lombok.Data;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.provider.ClientDetails;
 
@@ -64,12 +63,6 @@ public class CustomClientDetails implements ClientDetails {
         return scopes.stream()
                 .map(Scope::getScope)
                 .collect(Collectors.toSet());
-//        String join = StringUtils.join(scopes.stream()
-//                .map(scope -> scope.getScope())
-//                .collect(Collectors.toList()).toArray(), ",");
-//        Set<String> scope = new HashSet<>();
-//        scope.add(join);
-//        return scope;
     }
 
     @Override

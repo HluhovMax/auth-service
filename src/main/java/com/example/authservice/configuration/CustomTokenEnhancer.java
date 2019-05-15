@@ -1,5 +1,6 @@
 package com.example.authservice.configuration;
 
+import com.example.authservice.model.Status;
 import com.example.authservice.repository.AuthClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.oauth2.common.DefaultOAuth2AccessToken;
@@ -28,7 +29,7 @@ public class CustomTokenEnhancer implements TokenEnhancer {
 
         Map<String, Object> additionalInfo = new HashMap<>();
         additionalInfo.put("clientId", clientId);
-
+        additionalInfo.put("status", Status.VALID);
         DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) accessToken;
         token.setAdditionalInformation(additionalInfo);
         return token;

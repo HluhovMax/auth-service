@@ -27,4 +27,7 @@ public class AccessToken {
     private String clientId;
 
     private Date expirationDate;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

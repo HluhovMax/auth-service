@@ -2,6 +2,7 @@ package com.example.authservice.configuration;
 
 import com.example.authservice.model.AccessToken;
 import com.example.authservice.model.RefreshToken;
+import com.example.authservice.model.Status;
 import com.example.authservice.repository.AccessTokenRepo;
 import com.example.authservice.repository.RefreshTokenRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -45,6 +46,7 @@ public class SecondTokenStore implements TokenStore {
                 .tokenValue(token.getValue())
                 .clientId(authentication.getOAuth2Request().getClientId())
                 .expirationDate(token.getExpiration())
+                .status(Status.VALID)
                 .build();
         accessToken = accRepo.save(accessToken);
         log.info("\n===" + accessToken.getId() + "===AccessToken: {}", accessToken);
